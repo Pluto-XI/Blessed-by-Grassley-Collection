@@ -31,11 +31,13 @@ So, when we want to perform an action that changes the blockchain we call it a t
 ## Deploying to Goerli with offchain image hosting
 This was fun! I used Quicknode to deploy my contract to the Ethereum Goerli testnet. Goerli is new at the time of writing, RIP Rinkeby.
 The smart contract has a URI that was set to a url that returns metadata. The data structure looks like this
+```
 {
     name: Blessed by Grassley,
     description: A silent hero, a watchful protector.
     image: imgur link
 } 
+```
 
 I ran into some issues here where OpenSea would not provide a preview of my
 linked image. 
