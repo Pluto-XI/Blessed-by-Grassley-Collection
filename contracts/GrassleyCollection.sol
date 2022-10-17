@@ -14,7 +14,7 @@ contract GrassleyCollection is ERC721URIStorage {
     
     //We need to pass the name of our NFT's token and its symbol
     constructor() ERC721 ("Blessed by Grassley", "BLESSED") {
-        console.log('This is the nft contract constructor. Line 17');
+        console.log('This is the nft contract constructor, Line 17');
     }
 
     //This is the function our users will hit to get blessed by grassley
@@ -37,7 +37,7 @@ contract GrassleyCollection is ERC721URIStorage {
                 "image": "https://i.imgur.com/v7U019j.png"
             }
         */
-        _setTokenURI(newItemId, 'https://bafkreidpvcnexxrxjzmnemlhfiijqz3cz7utnwrv372snksjonsulfhcra.ipfs.nftstorage.link/');
+        _setTokenURI(newItemId, 'ipfs://bafkreidpvcnexxrxjzmnemlhfiijqz3cz7utnwrv372snksjonsulfhcra');
         console.log('A new NFT with id %s has been minted to %s', newItemId, msg.sender);
 
         //Increment the counter for when the next NFT is minted.

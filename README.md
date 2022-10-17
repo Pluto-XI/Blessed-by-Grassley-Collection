@@ -28,7 +28,18 @@ Here is the standard I imported: <a href="https://github.com/OpenZeppelin/openze
 So, when we want to perform an action that changes the blockchain we call it a transaction. For example, sending someone ETH is a transaction because we're changing account balances. Doing something that updates a variable in our contract is also considered a transaction because we're changing data. Minting an NFT is a transaction because we're saving data on the contract.
 
 
-## Deploying to Goerli
+## Deploying to Goerli with offchain image hosting
 This was fun! I used Quicknode to deploy my contract to the Ethereum Goerli testnet. Goerli is new at the time of writing, RIP Rinkeby.
+The smart contract has a URI that was set to a url that returns metadata. The data structure looks like this
+{
+    name: Blessed by Grassley,
+    description: A silent hero, a watchful protector.
+    image: imgur link
+} 
+
+I ran into some issues here where OpenSea would not provide a preview of my
+linked image. 
+
 
 My first ever contract was deployed on Goerli to 0x7FB383937344C03cb1Cf456795446C786209eBC5
+This version has off-chain data hosted on IPFS: 0x3c82b9345f3E216AdF0B6a0Dec7Ee682850C80d1
