@@ -15,7 +15,16 @@ const main = async () => {
     await nftContract.deployed();
 
     console.log('Contract deployed to:', nftContract.address);
-}
+
+    //Call the NFT contract
+    let txn = await nftContract.getBlessed();
+    await txn.wait();
+
+    //Mint another one just cuz
+    txn = await nftContract.getBlessed();
+    await txn.wait();
+
+};
 
 
 //This function just runs our main function
