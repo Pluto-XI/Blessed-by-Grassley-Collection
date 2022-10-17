@@ -41,7 +41,9 @@ The smart contract has a URI that was set to a url that returns metadata. The da
 ```
 
 I ran into some issues here where OpenSea would not provide a preview of my
-linked image. 
+linked image. OpenSea could not fetch my json from my endpoint, after multiple different urls I ended up hosting the metadata on IPFS and
+used the ipfs endpoint in order for my metadata to be fetched. At the time of writing OpenSea did not provide previews due to a null uri_token.
+Rarible on the otherhand had no issues and previewed my image perfectly.
 
 
 My first ever contract was deployed on Goerli to 0x7FB383937344C03cb1Cf456795446C786209eBC5
