@@ -65,4 +65,4 @@ Our browser can parse this as well,
 data:application/json;base64,INSERT_YOUR_BASE64_ENCODED_JSON_HERE
 ```
 
-Now we have a way to keep our JSON permanent until the heatdeath of the universe. Maybe even a little bit after that... is what I would say if the Ethereum blockchain had not introduced a size limit of 24576 bytes with the arrival of our friend <a href="https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/" target="blank"><b>Spurious Dragon</b></a>. So while we may have an exact encoding of our lord and savior Troy Grassley, it is too mighty for the blockchain to hold.
+Now we have a way to keep our JSON permanent until the heatdeath of the universe. Maybe even a little bit after that... is what I would say if the Ethereum blockchain had not introduced a size limit of 24576 bytes with the arrival of our friend <a href="https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/" target="blank"><b>Spurious Dragon</b></a>. So while we may have an exact encoding of our savior Troy Grassley, it is too mighty for the blockchain to hold.
