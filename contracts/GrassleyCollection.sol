@@ -25,6 +25,10 @@ contract GrassleyCollection is ERC721URIStorage {
     // Pick some random funny words, names of anime characters, foods you like, whatever! 
     string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Ate", "Punted", "Enlightened", "Struck", "Cooked"];
     string ending = " By Grassley";
+
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
+
     
 
     
@@ -106,6 +110,8 @@ contract GrassleyCollection is ERC721URIStorage {
 
         //Increment the counter for when the next NFT is minted.
         _tokenIds.increment();
+
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 
 }

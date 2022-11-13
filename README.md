@@ -66,3 +66,6 @@ data:application/json;base64,INSERT_YOUR_BASE64_ENCODED_JSON_HERE
 ```
 
 Now we have a way to keep our JSON permanent until the heatdeath of the universe. Maybe even a little bit after that... is what I would say if the Ethereum blockchain had not introduced a size limit of 24576 bytes with the arrival of our friend <a href="https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/" target="_blank"><b>Spurious Dragon</b></a>. So while we may have an exact encoding of our savior Troy Grassley, it is too mighty for the blockchain to hold.
+
+### The Front End
+This part was cool, we created a React app and used Ethers along with the metamask ethereum object to call a function on our smart contract from the browser. My front end is currently hosted on REPLIT <a target="_blank" href="https://nft-starter-project.plutoxi.repl.co/">here</a>. 
