@@ -48,3 +48,20 @@ Rarible on the otherhand had no issues and previewed my image perfectly.
 
 My first ever contract was deployed on Goerli to 0x7FB383937344C03cb1Cf456795446C786209eBC5
 This version has off-chain data hosted on IPFS: 0x3c82b9345f3E216AdF0B6a0Dec7Ee682850C80d1
+
+
+## Minting NFTs with static SVGs
+This was kinda wild learning that SVGs can be encoded decoded by a browser. I learned I could encode an SVG using <a href="https://www.utilities-online.info/base64?utm_source=buildspace.so&utm_medium=buildspace_project">Base64</a> and pasting it into my browser to see it.
+
+```
+data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE
+```
+
+This allows us to ditch the URI in the JSON metadata and using the encoded string instead. We just point to the string instead.
+BUT WAIT, if the site we used to host our json metadata goes down, we'll lose Troy forever. <b>So let's encode the whole JSON file</b>.
+Our browser can parse this as well,
+
+```
+data:application/json;base64,INSERT_YOUR_BASE64_ENCODED_JSON_HERE
+```
+
