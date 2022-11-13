@@ -19,11 +19,18 @@ const main = async () => {
     //Call the NFT contract
     let txn = await nftContract.getBlessed();
     await txn.wait();
+    console.log("NFT minted 1");
+
+    txn = await nftContract.getCurrentTokens();
+    console.log(txn);
 
     //Mint another one just cuz
     txn = await nftContract.getBlessed();
     await txn.wait();
+    console.log("NFT 2 minted");
 
+    txn = await nftContract.getCurrentTokens();
+    console.log(txn);
 };
 
 

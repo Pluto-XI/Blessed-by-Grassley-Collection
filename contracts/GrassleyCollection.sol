@@ -15,6 +15,9 @@ contract GrassleyCollection is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
+    //Set the max amount of tokens available
+    uint256 private _maxNftCount = 4;
+
 
 
     // This is our SVG code. All we need to change is the word that's displayed. Everything else stays the same.
@@ -23,10 +26,10 @@ contract GrassleyCollection is ERC721URIStorage {
 
     // I create three arrays, each with their own theme of random words.
     // Pick some random funny words, names of anime characters, foods you like, whatever! 
-    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Ate", "Punted", "Enlightened", "Struck", "Cooked"];
+    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Ate", "Punted", "Enlightened", "Struck", "Cooked", "Helped", "Redbull", "Cursed"];
     string ending = " By Grassley";
 
-    event NewEpicNFTMinted(address sender, uint256 tokenId);
+    event NewIndividualBlessed(address sender, uint256 tokenId);
 
 
     
@@ -52,13 +55,19 @@ contract GrassleyCollection is ERC721URIStorage {
         return uint256(keccak256(abi.encodePacked(input)));
     }
 
+    function getCurrentTokens() public view returns (string memory) {
+        return(string(abi.encodePacked(Strings.toString(_tokenIds.current()), " / ", Strings.toString(_maxNftCount))));
+    }
+
 
     //This is the function our users will hit to get blessed by grassley
     function getBlessed() public {
+
+        require(_tokenIds.current() < _maxNftCount, "Max tokens minted");
+
         //This will keep track of the NFTs unique identifier, it's just a number, automatically initialized to 0 when declared.
         //This is a state variable, so when it's changed the value is stored on the contact directly.
         uint256 newItemId = _tokenIds.current();
-
 
 
         //This picks a random word for our NFT and closes our SVG code
@@ -111,7 +120,7 @@ contract GrassleyCollection is ERC721URIStorage {
         //Increment the counter for when the next NFT is minted.
         _tokenIds.increment();
 
-        emit NewEpicNFTMinted(msg.sender, newItemId);
+        emit NewIndividualBlessed(msg.sender, newItemId);
     }
 
 }
