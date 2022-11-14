@@ -16,7 +16,7 @@ contract GrassleyCollection is ERC721URIStorage {
     Counters.Counter private _tokenIds;
 
     //Set the max amount of tokens available
-    uint256 private _maxNftCount = 4;
+    uint256 private _maxNftCount = 100;
 
 
 
@@ -26,7 +26,7 @@ contract GrassleyCollection is ERC721URIStorage {
 
     // I create three arrays, each with their own theme of random words.
     // Pick some random funny words, names of anime characters, foods you like, whatever! 
-    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Ate", "Punted", "Enlightened", "Struck", "Cooked", "Helped", "Redbull", "Cursed"];
+    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Punted", "Enlightened", "Struck", "Cooked", "Helped", "Cursed", "Ignored", "Chanel", "Versacci", "Belanciaga"];
     string ending = " By Grassley";
 
     event NewIndividualBlessed(address sender, uint256 tokenId);

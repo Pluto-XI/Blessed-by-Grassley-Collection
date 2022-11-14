@@ -1,0 +1,147 @@
+.App {
+  height: 100vh;
+  background: -webkit-linear-gradient(#ffffff 40%, #ffdfa0 60%);
+  overflow: scroll;
+  text-align: center;
+}
+
+.container {
+  height: 100%;
+/*   background-color: #deddda; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  padding-top: 100px;
+}
+
+.header {
+  margin: 0;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.sub-text {
+  font-size: 25px;
+  color: #241f31;
+}
+
+.body-text {
+  font-size: 1.3rem;
+  max-width: 60ch;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+.gradient-text {
+  background: -webkit-linear-gradient(left, #f5c211 30%, #ff7800 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-button {
+  margin-bottom: 2rem;
+  margin-inline: auto;
+  display: block;
+  height: 55px;
+  border: 0;
+  width: auto;
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  transition: .6s;
+}
+
+.cta-button:hover, .cta-button:focus {
+  scale: 1.1;
+}
+
+.connect-wallet-button {
+  background: -webkit-linear-gradient(left, #f8e45c, #e66100);
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
+}
+
+.mint-button {
+  background: -webkit-linear-gradient(left, #a200d6, #ff6fdf);
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
+  margin-right: 15px;
+}
+
+.opensea-button {
+  display: inline-block;
+  background-color: rgb(32, 129, 226);
+  padding: 1rem 2.2rem;
+  height: auto;
+  transition: .6s;
+}
+
+.mint-count {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .4rem;
+  border-radius: .3rem;
+  background-color: #000000;
+}
+
+.twitter-logo {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* KeyFrames */
+@-webkit-keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
