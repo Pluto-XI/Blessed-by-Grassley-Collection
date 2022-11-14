@@ -178,7 +178,7 @@ return (
           </a>
         </div>
         <div className="container body-text">
-          <p>Welcome to the Troy Grassley NFT Collection! This was a project to learn more about the Ethereum blockchain. If you're interested in seeing the source code and how this was built, please take a look at the <a href="https://github.com/Pluto-XI/Blessed-by-Grassley-Collection">github repo.</a></p>
+          <p>Welcome to the Troy Grassley NFT Collection! This was a project to learn more about the Ethereum blockchain. If you're interested in seeing the source code and how this was built, please take a look at the <a target="_blank" href="https://github.com/Pluto-XI/Blessed-by-Grassley-Collection">github repo.</a></p>
         </div>
         <div className="footer-container">
           <img alt="Buildspace Logo" className="twitter-logo" src={buildSpaceLogo} />
