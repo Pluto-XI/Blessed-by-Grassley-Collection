@@ -1,7 +1,7 @@
 ### Blessed by Grassley Collection
 
 This is an NFT collection made in order to learn a bit about the Ethereum blockchain.
-This project can be viewed here: <a href="https://nft-starter-project.plutoxi.repl.co/">The Grassley Collection</a>.
+This project can be viewed here: <a target="_blank" href="https://nft-starter-project.plutoxi.repl.co/">The Grassley Collection</a>.
 
 ### Welcome to the Grassley NFT collection source code.
 I am an aspiring dev looking to get my foot in the door. Here's what I learned while making this project.
