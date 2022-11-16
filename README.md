@@ -25,7 +25,7 @@ The contract keyword looks like a class in other languages.
 ## ERC 721
 ERC 721 is the NFT standard, I used OpenZeppelin to implement the standard and wrote my own logic on top of it. No boiler plate had to be
 written due to this. Just like writing an HTTP server from scratch would be crazy, similarly it would be nuts to write an NFT contract from complete scratch.
-Here is the standard I imported: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol?utm_source=buildspace.so&utm_medium=buildspace_project">ERC 721</a>
+Here is the standard I imported: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol">ERC 721</a>
 
 So, when we want to perform an action that changes the blockchain we call it a transaction. For example, sending someone ETH is a transaction because we're changing account balances. Doing something that updates a variable in our contract is also considered a transaction because we're changing data. Minting an NFT is a transaction because we're saving data on the contract.
 
