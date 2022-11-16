@@ -6,12 +6,14 @@ import getBlessed from './utils/getBlessed.json';
 
 // Constants
 const OPENSEA_LINK = 'https://testnets.opensea.io/collection/blessed-by-grassley-2f9aazbi2k';
-const TOTAL_MINT_COUNT = 50;
 
 const CONTRACT_ADDRESS = "0x5327f9B0Eb8551e70718BbB696C473f9E4509937";
 
-const App = () => {
+// let shouldBeginInterval = true;
 
+
+const App = () => {
+  const [mintCount, setMintCount] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
   
   const checkIfWalletIsConnected = async () => {
@@ -51,8 +53,11 @@ const connectWallet = async () => {
 
     console.log("Connected", accounts[0]);
     setCurrentAccount(accounts[0]);
-
     setUpEventListener();
+
+    // if (accounts[0]) {
+    //   updateCurrentCount();
+    // }
   } catch(error) {
     console.log(error);
   }
@@ -69,6 +74,7 @@ const connectWallet = async () => {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, getBlessed.abi, signer);
+        updateCurrentCount()
 
         // THIS IS THE MAGIC SAUCE.
         // This will essentially "capture" our event when our contract throws it.
@@ -133,16 +139,22 @@ const updateCurrentCount = async () => {
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, getBlessed.abi, signer);
 
-        
-        let txn = await connectedContract.getCurrentTokens();
-        console.log(txn);
+        // if (shouldBeginInterval) {
+          // shouldBeginInterval = false;
+          setInterval(() => {
+          connectedContract.getCurrentTokens()
+            .then((txn) => {
+              setMintCount(txn);
+              console.log("tick");
+            });
+          }, 2000)
+        // }
       }
   } catch(error) {
     console.log(error);
   }
 };
-
-
+  
   
   // Render Methods
   const renderNotConnectedContainer = () => (
@@ -150,6 +162,8 @@ const updateCurrentCount = async () => {
       Connect to Wallet
     </button>
   );
+
+
 
   useEffect(() => {
     checkIfWalletIsConnected();
@@ -168,9 +182,12 @@ return (
               ? renderNotConnectedContainer()
               : (
                 /** Add askContractToMintNft Action for the onClick event **/
+                <div>    
+                <h2 className={mintCount ? "animate-in height-animation":"no-height height-animation"}>{mintCount}</h2>
                 <button onClick={askContractToMintNft} className="cta-button connect-wallet-button">
                   Get Blessed
                 </button>
+                </div>
               )
             }
           <a className="cta-button opensea-button" target="_blank" href={OPENSEA_LINK}>
@@ -190,7 +207,6 @@ return (
           >{`Thank you to the buildspace community!`}</a>
         </div>
       </div>
-      <button onClick={updateCurrentCount}>Get current count</button>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 .App {
   height: 100vh;
   background: -webkit-linear-gradient(#ffffff 40%, #ffdfa0 60%);
-  overflow: scroll;
   text-align: center;
 }
 
@@ -110,6 +109,24 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+
+
+.no-height {
+  transform: scaleY(0);
+}
+
+.animate-in {
+  transform: scaleY(1);
+}
+
+.height-animation {
+  transition: transform .2s ease-in;
+  transform-origin: top center;
+}
+
+
+
 
 /* KeyFrames */
 @-webkit-keyframes gradient-animation {
