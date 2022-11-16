@@ -121,7 +121,7 @@
 }
 
 .height-animation {
-  transition: transform .2s ease-in;
+  transition: transform .235s ease-in;
   transform-origin: top center;
 }
 

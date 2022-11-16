@@ -147,7 +147,7 @@ const updateCurrentCount = async () => {
               setMintCount(txn);
               console.log("tick");
             });
-          }, 2000)
+          }, 3500)
         // }
       }
   } catch(error) {
