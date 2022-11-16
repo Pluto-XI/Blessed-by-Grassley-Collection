@@ -183,7 +183,7 @@ return (
               : (
                 /** Add askContractToMintNft Action for the onClick event **/
                 <div>    
-                <h2 className={mintCount ? "animate-in height-animation":"no-height height-animation"}>{mintCount}</h2>
+                <h2 className={mintCount ? "animate-in height-animation":"no-height height-animation"}>{mintCount} Individuals Blessed 🙏</h2>
                 <button onClick={askContractToMintNft} className="cta-button connect-wallet-button">
                   Get Blessed
                 </button>
