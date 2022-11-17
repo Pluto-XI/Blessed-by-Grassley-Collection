@@ -15,6 +15,7 @@ const CONTRACT_ADDRESS = "0x5327f9B0Eb8551e70718BbB696C473f9E4509937";
 const App = () => {
   const [mintCount, setMintCount] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
+  const [miningAnimation, setMiningAnimation] = useState(false);
   
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -116,8 +117,16 @@ const askContractToMintNft = async () => {
         console.log("Pop that wallet and pay gas");
         let nftTxn = await connectedContract.getBlessed();
 
+        //Start animation
+        setMiningAnimation(true);
+
         console.log("Please wait... mining");
         await nftTxn.wait();
+
+        //End animation
+        setMiningAnimation(false);
+
+        //Set element on view to show the NFT url
 
         console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
         } 
