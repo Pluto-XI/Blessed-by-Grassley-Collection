@@ -1,7 +1,7 @@
 ### Blessed by Grassley Collection
 
 This is an NFT collection made in order to learn a bit about the Ethereum blockchain.
-This project can be viewed here: <a href="https://BlessedByGrassley.plutoxi.repl.co">The Grassley Collection</a>.
+This project can be viewed here: <a href="https://warm-bavarois-e3d195.netlify.app/">The Grassley Collection</a>.
 
 ### Welcome to the Grassley NFT collection source code.
 I am an aspiring dev looking to get my foot in the door. Here's what I learned while making this project.
@@ -13,6 +13,7 @@ An NFT is a "token" that a person can own that links to some piece of "data" (ex
 
 ## Setting up my local environment
 The NFT collection was developed using Hardhat to run a local blockchain. Ethers and OpenZeppelin libraries.
+React was used to build the front-end.
 
 Hardhat compiles my smart contracts from Solidity to evm bytecode, spun up a local blockchain, and deployed a smart contract to this local instance.
 
@@ -69,4 +70,4 @@ data:application/json;base64,INSERT_YOUR_BASE64_ENCODED_JSON_HERE
 Now we have a way to keep our JSON permanent until the heatdeath of the universe. Maybe even a little bit after that... is what I would say if the Ethereum blockchain had not introduced a size limit of 24576 bytes with the arrival of our friend <a href="https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/"><b>Spurious Dragon</b></a>. So while we may have an exact encoding of our savior Troy Grassley, it is too mighty for the blockchain to hold.
 
 ### The Front End
-This part was cool, we created a React app and used Ethers along with the metamask ethereum object to call a function on our smart contract from the browser. My front end is currently hosted on REPLIT <a href="https://BlessedByGrassley.plutoxi.repl.co">here</a>. 
+This part was cool, we created a React app and used Ethers along with the metamask ethereum object to call a function on our smart contract from the browser. My front end is currently hosted on REPLIT <a href="https://warm-bavarois-e3d195.netlify.app/">here</a>. 
