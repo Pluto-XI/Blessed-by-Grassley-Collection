@@ -9,9 +9,6 @@ import HashLoader from 'react-spinners/HashLoader';
 const OPENSEA_LINK = 'https://testnets.opensea.io/collection/blessed-by-grassley-cs80iaqlei';
 const CONTRACT_ADDRESS = "0xb13D67DcDB198e5396748d2346194aA25543b455";
 
-// let shouldBeginInterval = true;
-let ethereum = window.ethereum;
-
 
 const App = () => {
   const [mintCount, setMintCount] = useState("");
