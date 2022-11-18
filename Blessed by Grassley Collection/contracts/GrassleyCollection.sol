@@ -21,29 +21,27 @@ contract GrassleyCollection is ERC721URIStorage {
 
 
     // This is our SVG code. All we need to change is the word that's displayed. Everything else stays the same.
-    // So, we make a baseSvg variable here that all our NFTs can use.
-    string baseSvg = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: serif; font-size: 24px; }</style><rect width='100%' height='100%' fill='black' /><text x='50%' y='50%' class='base' dominant-baseline='middle' text-anchor='middle'>";
+    // We split the SVG at the part where it asks for the background color.
+    string svgPartOne = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: serif; font-size: 24px; }</style><rect width='100%' height='100%' fill='";
+    string svgPartTwo = "'/><text x='50%' y='50%' class='base' dominant-baseline='middle' text-anchor='middle'>";
 
-    // I create three arrays, each with their own theme of random words.
-    // Pick some random funny words, names of anime characters, foods you like, whatever! 
-    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Punted", "Enlightened", "Struck", "Cooked", "Helped", "Cursed", "Ignored", "Chanel", "Versacci", "Belanciaga"];
+    // I created an array, each with their own theme of random words.
+    string[] firstWords = ["Blessed", "Owned", "Yeeted", "Punched", "Blocked", "Enlightened", "Struck", "Cooked", "Helped", "Cursed", "Ignored", "Chanel", "Versacci", "Balenciaga", "Dior", "Kicked", "Ban-Hammered", "Walloped"];
     string ending = " By Grassley";
 
+    //Colors the SVG can use
+    string[] colors = ["#f8ac0c", "#a18053", "#ffedcb", "#005248", "#fe8980", "#fff7e8", "#00c4ff", "#00db98"];
+
     event NewIndividualBlessed(address sender, uint256 tokenId);
-
-
-    
-
     
     //We need to pass the name of our NFT's token and its symbol
     constructor() ERC721 ("Blessed by Grassley", "BLESSED") {
-        console.log('This is the nft contract constructor, Line 17');
+        console.log('Hello, World!');
     }
 
 
     // Randomly pick a word from each array.
     function pickRandomFirstWord(uint256 tokenId) public view returns (string memory) {
-
       // The random generator is Seeded with the word blessed
       uint256 rand = random(string(abi.encodePacked("BLESSED", Strings.toString(tokenId))));
       // Squash the # between 0 and the length of the array to avoid going out of bounds.
@@ -55,10 +53,15 @@ contract GrassleyCollection is ERC721URIStorage {
         return uint256(keccak256(abi.encodePacked(input)));
     }
 
+    function pickRandomColor(uint256 tokenId) public view returns (string memory) {
+        uint256 rand = random(string(abi.encodePacked("COLOR", Strings.toString(tokenId))));
+        rand = rand % colors.length;
+        return colors[rand];
+    }
+
     function getCurrentTokens() public view returns (string memory) {
         return(string(abi.encodePacked(Strings.toString(_tokenIds.current()), " / ", Strings.toString(_maxNftCount))));
     }
-
 
     //This is the function our users will hit to get blessed by grassley
     function getBlessed() public {
@@ -72,8 +75,9 @@ contract GrassleyCollection is ERC721URIStorage {
 
         //This picks a random word for our NFT and closes our SVG code
         string memory first = pickRandomFirstWord(newItemId);
-        string memory finalSvg = string(abi.encodePacked(baseSvg, first, ending, "</text></svg>"));
         string memory combinedWord = string(abi.encodePacked(first, ending));
+        string memory randomColor = pickRandomColor(newItemId);
+        string memory finalSvg = string(abi.encodePacked(svgPartOne, randomColor, svgPartTwo, first, ending, "</text></svg>"));
 
         string memory json = Base64.encode(
             bytes(
@@ -91,10 +95,14 @@ contract GrassleyCollection is ERC721URIStorage {
             )
         );
 
-    string memory finalTokenUri = string(
-        abi.encodePacked("data:application/json;base64,", json)
-    );
+        string memory finalTokenUri = string(
+            abi.encodePacked("data:application/json;base64,", json)
+        );
 
+
+        console.log("\n--------------------");
+        console.log(finalTokenUri);
+        console.log("--------------------\n");
 
 
         //Mint the NFT and bless the sender. msg.sender is the users address
