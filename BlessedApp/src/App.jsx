@@ -16,6 +16,11 @@ const App = () => {
   const [mintCount, setMintCount] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
   const [miningAnimation, setMiningAnimation] = useState(false);
+
+  //Text states
+  const [minedMessage, setMinedMessage] = useState("");
+  const [mintedNFTLink, setMintedNFTLink] = useState("");
+  const [miningTxn, setMiningTxn] = useState("");
   
   
   const checkIfWalletIsConnected = async () => {
@@ -83,7 +88,8 @@ const connectWallet = async () => {
         // If you're familiar with webhooks, it's very similar to that!
         connectedContract.on("NewIndividualBlessed", (from, tokenId) => {
           console.log(from, tokenId.toNumber())
-          alert(`Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`)
+          setMintedNFTLink(`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
+          setMinedMessage("👋 Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link to your blessing:");
         });
 
         console.log("Setup event listener!")
@@ -115,6 +121,11 @@ const askContractToMintNft = async () => {
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, getBlessed.abi, signer);
 
+        //reset state
+        setMinedMessage("");
+        setMintedNFTLink("");
+        setMiningTxn("");
+
         console.log("Pop that wallet and pay gas");
         let nftTxn = await connectedContract.getBlessed();
 
@@ -123,6 +134,7 @@ const askContractToMintNft = async () => {
     
 
         console.log("Please wait... mining");
+        setMiningTxn(`https://goerli.etherscan.io/tx/${nftTxn.hash}`);
         await nftTxn.wait();
 
         //End animation
@@ -183,13 +195,19 @@ const updateCurrentCount = async () => {
 
 return (
     <div className="App">
-      <div className="container">
-        <div className="header-container">
-          <p className="header gradient-text">The Blessed by Grassley Collection</p>
+
+        <header>
+          <h1 className="header gradient-text">The Blessed by Grassley Collection</h1>
           <p className="sub-text">
             Each unique. Each beautiful. Today we are truly blessed.
           </p>
-          <div className={miningAnimation ? "spinner-container" : ""}>{miningAnimation ? <HashLoader color="#efa530" /> : ""}</div>
+        </header>
+          {miningAnimation ? (
+            <div className="spinner-container"><HashLoader color="#efa530" /> <p>Mining... please wait. Follow your transaction <a target="_blank" href={miningTxn}>here.</a></p></div>
+          ) : (
+            null
+          )}
+          <div>
           {currentAccount === "" 
               ? renderNotConnectedContainer()
               : (
@@ -205,7 +223,13 @@ return (
           <a className="cta-button opensea-button" target="_blank" href={OPENSEA_LINK}>
            🌊 View Collection On OpenSea
           </a>
-        </div>
+          </div>
+          {minedMessage !== "" ? (
+            <p className="container body-text">{minedMessage} <a className="body-text" target="_blank" href={mintedNFTLink}>View NFT on OpenSea</a></p>
+          ) : (
+            null
+          )}
+
         <div className="container body-text">
           <p>Welcome to the Troy Grassley NFT Collection! This was a project to learn more about the Ethereum blockchain. If you're interested in seeing the source code and how this was built, please take a look at the <a target="_blank" href="https://github.com/Pluto-XI/Blessed-by-Grassley-Collection">github repo.</a></p>
           <a target="_blank" href="https://goerlifaucet.com">Need some ETH?</a>
@@ -217,9 +241,8 @@ return (
             href="https://buildspace.so/"
             target="_blank"
             rel="noreferrer"
-          >{`Thank you to the buildspace community!`}</a>
+          >Thank you to the buildspace community!</a>
         </div>
-      </div>
     </div>
   );
 };

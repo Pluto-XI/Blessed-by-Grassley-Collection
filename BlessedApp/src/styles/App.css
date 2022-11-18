@@ -1,24 +1,27 @@
 .App {
-  height: 100vh;
-  background: -webkit-linear-gradient(#ffffff 40%, #ffdfa0 60%);
+  min-height: 100vh;
   text-align: center;
-}
-
-.container {
-  height: 100%;
-/*   background-color: #deddda; */
+  background: -webkit-linear-gradient(#ffffff 40%, #ffdfa0 60%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.header-container {
-  padding-top: 100px;
+
+.container {
+/*   background-color: #deddda; */
+  max-width: 80%;
+
 }
 
+/* .header-container {
+  padding-top: 100px;
+} */
+
 .header {
-  margin: 0;
+  padding-inline: 1rem;
+  margin-top: 100px;
   font-size: 50px;
   font-weight: bold;
 }
@@ -29,10 +32,9 @@
 }
 
 .body-text {
-  font-size: 1.3rem;
+  font-size: clamp(.9rem, 1.2vw, 2rem); 
   max-width: 60ch;
   margin-inline: auto;
-  padding: 2rem 1rem;
 }
 
 .gradient-text {
@@ -97,6 +99,7 @@
   padding: .4rem;
   border-radius: .3rem;
   background-color: #000000;
+  margin-top: 1rem;
 }
 
 .twitter-logo {
@@ -106,7 +109,7 @@
 
 .footer-text {
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -126,9 +129,12 @@
 }
 
 .spinner-container {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-inline: auto;
   transition: .5s;
+  gap: 1rem;
   /* margin-bottom: 1rem; */
 }
 
