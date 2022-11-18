@@ -99,12 +99,6 @@ contract GrassleyCollection is ERC721URIStorage {
             abi.encodePacked("data:application/json;base64,", json)
         );
 
-
-        console.log("\n--------------------");
-        console.log(finalTokenUri);
-        console.log("--------------------\n");
-
-
         //Mint the NFT and bless the sender. msg.sender is the users address
         //Solidity has msg.sender built in. It's a super secure way of getting the user's public address. Can't be faked unless their creds are already known.
         //Contract can't be called anonymously
