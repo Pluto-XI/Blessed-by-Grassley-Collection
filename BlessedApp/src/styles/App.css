@@ -125,6 +125,12 @@
   transform-origin: top center;
 }
 
+.spinner-container {
+  display: inline-block;
+  margin-inline: auto;
+  transition: .5s;
+  /* margin-bottom: 1rem; */
+}
 
 
 

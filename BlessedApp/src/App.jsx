@@ -3,6 +3,7 @@ import './styles/App.css';
 import buildSpaceLogo from './assets/buildspace.png';
 import { ethers } from 'ethers';
 import getBlessed from './utils/getBlessed.json';
+import HashLoader from 'react-spinners/HashLoader';
 
 // Constants
 const OPENSEA_LINK = 'https://testnets.opensea.io/collection/blessed-by-grassley-2f9aazbi2k';
@@ -16,6 +17,7 @@ const App = () => {
   const [mintCount, setMintCount] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
   const [miningAnimation, setMiningAnimation] = useState(false);
+  
   
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -119,6 +121,7 @@ const askContractToMintNft = async () => {
 
         //Start animation
         setMiningAnimation(true);
+    
 
         console.log("Please wait... mining");
         await nftTxn.wait();
@@ -187,6 +190,7 @@ return (
           <p className="sub-text">
             Each unique. Each beautiful. Today we are truly blessed.
           </p>
+          <div className={true ? "spinner-container" : ""}>{true ? <HashLoader color="#efa530" /> : ""}</div>
           {currentAccount === "" 
               ? renderNotConnectedContainer()
               : (
