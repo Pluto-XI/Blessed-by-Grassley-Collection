@@ -6,9 +6,8 @@ import getBlessed from './utils/getBlessed.json';
 import HashLoader from 'react-spinners/HashLoader';
 
 // Constants
-const OPENSEA_LINK = 'https://testnets.opensea.io/collection/blessed-by-grassley-2f9aazbi2k';
-
-const CONTRACT_ADDRESS = "0x5327f9B0Eb8551e70718BbB696C473f9E4509937";
+const OPENSEA_LINK = 'https://testnets.opensea.io/collection/blessed-by-grassley-cs80iaqlei';
+const CONTRACT_ADDRESS = "0xb13D67DcDB198e5396748d2346194aA25543b455";
 
 // let shouldBeginInterval = true;
 
